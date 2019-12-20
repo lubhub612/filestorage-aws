@@ -40,7 +40,6 @@ Structure tags are used by encoding/json library
 */
 
 type Filestorage struct {
-	Fileguid string `json:"fileguid"`
 	Filehash string `json:"filehash"`
 	Timestamp string `json:"timestamp"`
 }
