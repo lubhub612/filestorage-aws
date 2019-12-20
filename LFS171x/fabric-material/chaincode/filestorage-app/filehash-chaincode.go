@@ -133,8 +133,8 @@ This method takes in three arguments (attributes to be saved in the ledger).
 
 func (s *SmartContract) recordFile(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 4 {
-		return shim.Error("Incorrect number of arguments. Expecting 4")
+	if len(args) != 3 {
+		return shim.Error("Incorrect number of arguments. Expecting 3")
 	}
 
 	var file = File{ Filehash: args[1], Timestamp: args[2] }
