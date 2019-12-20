@@ -91,13 +91,12 @@ return{
 	add_file: function(req, res){
 		console.log("submit recording of a file hash: ");
 
-		var array = req.params.filehashnew.split("-");
+		var array = req.params.filehash.split("-");
 		console.log(array);
 
 		var key = array[0]
-		var timestamp = array[3]
-		var filehash = array[2]
-		var fileguid = array[1]
+		var timestamp = array[2]
+		var filehash = array[1]
 
 
 		var fabric_client = new Fabric_Client();
@@ -147,7 +146,7 @@ return{
 		        //targets : --- letting this default to the peers assigned to the channel
 		        chaincodeId: 'filestorage-app',
 		        fcn: 'recordFile',
-		        args: [key, fileguid, filehash, timestamp],
+		        args: [key,  filehash, timestamp],
 		        chainId: 'mychannel',
 		        txId: tx_id
 		    };
@@ -320,7 +319,7 @@ return{
 	change_filehash: function(req, res){
 		console.log("changing file hash : ");
 
-	var array = req.params.filehashnew.split("-");
+	var array = req.params.filehash.split("-");
 		var key = array[0]
 		var filehash = array[1];
 

@@ -137,7 +137,7 @@ func (s *SmartContract) recordFile(APIstub shim.ChaincodeStubInterface, args []s
 		return shim.Error("Incorrect number of arguments. Expecting 4")
 	}
 
-	var file = File{ Fileguid: args[1], Filehash: args[2], Timestamp: args[3] }
+	var file = File{ Filehash: args[1], Timestamp: args[2] }
 
 	fileAsBytes, _ := json.Marshal(file)
 	err := APIstub.PutState(args[0], fileAsBytes)

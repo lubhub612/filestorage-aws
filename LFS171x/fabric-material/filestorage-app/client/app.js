@@ -88,7 +88,7 @@ app.factory('appFactory', function($http){
 
 	factory.recordFile = function(data, callback){
 
-		var file = data.id + "-" + data.fileguid + "-" + data.filehash + "-" + data.timestamp;
+		var file = data.id + "-" + data.filehash + "-" + data.timestamp;
 
     	$http.get('/add_file/'+file).success(function(output){
 			callback(output)

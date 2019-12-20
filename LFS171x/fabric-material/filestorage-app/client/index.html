@@ -77,14 +77,12 @@
 
         <tr>
           <th>ID</th>
-          <th>File GUI ID</th>
           <th>Timestamp</th>
           <th>File Hash</th>
         </tr>
 
         <tr ng-repeat="file in all_file">
           <td>{{file.Key}}</td>
-          <td>{{file.fileguid}}</td>
           <td>{{file.timestamp}}</td>
           <td>{{file.filehash}}</td>
         </tr>
@@ -101,13 +99,11 @@
       <table id="query_file" class="table" align="center">
 
         <tr>
-          <th>File GUI ID</th>
           <th>Timestamp</th>
           <th>File Hash</th>
         </tr>
 
         <tr>
-          <td>{{query_file.fileguid}}</td>
           <td>{{query_file.timestamp}}</td>
           <td>{{query_file.filehash}}</td>
         </tr>
@@ -118,7 +114,6 @@
         <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_file}}</h5>
         <br>
         Enter fle id: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="file.id">
-        Enter fle GUI id: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="file.fileguid">
         Enter file hash: <input class="form-control" type="text" placeholder="Ex: 0239L" ng-model="file.filehash">
         Enter timestamp: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="file.timestamp">
         <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordFile()"> 
