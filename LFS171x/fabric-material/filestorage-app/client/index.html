@@ -1,0 +1,140 @@
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hyperledger Fabric File Hash Application</title>
+    <link rel="icon" href="favicon.png" type="image/gif">
+
+    <!-- require jquery and bootstrap scripts -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    
+    <!-- adding style here -->
+    <style type="text/css">
+      header{
+        background-color: lightgray;
+        font-size:20px;
+        padding:15px;
+      }
+      header, .form-group{
+        margin-bottom: 3%;
+      }
+      .form-group{
+        width:50%;
+      }
+      #body{
+        margin-left:3%;
+        margin-right:3%;
+      }
+      .form-control{
+        margin: 8px;
+      }
+      #right_header{
+        width:20%;
+        font-size:15px;
+        margin-right:0px;
+      }
+      #left_header{
+        margin-left:0;
+        width:40%;
+        display:inline-block;
+      } 
+      #id {
+        width:49%;
+        display: inline-block;
+      }
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+      }
+      td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+      }
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body ng-app="application" ng-controller="appController">
+    <header>
+      <div id="left_header">Hyperledger Fabric File Hash Application</div>
+      <i id="right_header"> Blockchain Application AWS Hyperledger Fabric</i>
+    </header>
+
+    <div id="body">
+      <div class="form-group">
+        <label>Query All File Hashes</label>
+        <p><input id="queryAllFile" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllFile()"></p>
+      </div>
+ 
+      <table id="all_file" class="table" align="center">
+
+        <tr>
+          <th>ID</th>
+          <th>File GUI ID</th>
+          <th>Timestamp</th>
+          <th>File Hash</th>
+        </tr>
+
+        <tr ng-repeat="file in all_file">
+          <td>{{file.Key}}</td>
+          <td>{{file.fileguid}}</td>
+          <td>{{file.timestamp}}</td>
+          <td>{{file.filehash}}</td>
+        </tr>
+      </table>
+
+      <div class="form-group">
+        <label>Query a Specific File</label><br>
+        <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid File Id</h5>
+        
+        Enter a File ID: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="file_id">
+        <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryFile()">
+      </div>
+
+      <table id="query_file" class="table" align="center">
+
+        <tr>
+          <th>File GUI ID</th>
+          <th>Timestamp</th>
+          <th>File Hash</th>
+        </tr>
+
+        <tr>
+          <td>{{query_file.fileguid}}</td>
+          <td>{{query_file.timestamp}}</td>
+          <td>{{query_file.filehash}}</td>
+        </tr>
+      </table>
+
+      <div class="form-group">
+        <label>Create File Record</label>
+        <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_file}}</h5>
+        <br>
+        Enter fle id: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="file.id">
+        Enter fle GUI id: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="file.fileguid">
+        Enter file hash: <input class="form-control" type="text" placeholder="Ex: 0239L" ng-model="file.filehash">
+        Enter timestamp: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="file.timestamp">
+        <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordFile()"> 
+      </div>
+
+      <div class="form-group">
+        <label>Change File Hash</label><br>
+        <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{change_filehash}}</h5>
+        <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid file Id</h5>
+        Enter a file id : <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="file.id">
+        Enter new file hash : <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="file.filehash">
+        <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeFilehash()">
+      </div>
+
+    </div>
+  </body>
+    <!-- requiring the angular page -->
+    <script type="text/javascript" src="app.js"> </script>
+</html>
