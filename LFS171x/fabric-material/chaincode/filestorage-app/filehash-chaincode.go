@@ -112,14 +112,14 @@ func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Respo
 	file := []File{
         }
 
-	i := 0
+	/*i := 0
 	for i < len(file) {
 		fmt.Println("i is ", i)
 		fileAsBytes, _ := json.Marshal(file[i])
 		APIstub.PutState(strconv.Itoa(i+1), fileAsBytes)
 		fmt.Println("File Added", file[i])
 		i = i + 1
-	}
+	}*/
 
 	return shim.Success(nil)
 }
